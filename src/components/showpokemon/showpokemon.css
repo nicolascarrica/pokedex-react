@@ -1,0 +1,61 @@
+.poke-card{
+    position: relative;
+    height: fit-content;
+    max-width: 400px;
+    border-radius: 4px;
+    color: #000;
+    text-align: center;
+    padding: 10px;
+    margin: 0 auto;
+    background-color: rgb(248, 210, 71);
+    border: 2px solid black;
+   
+}
+
+.poke-card::before {
+    content: '';
+    background: radial-gradient(black 33%, transparent 33%);
+    background-size: 3px 3px;
+    border-radius: 4px;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    z-index: -1;
+}
+
+.poke-stats div {
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-content: space-between;
+    padding: 5px;
+    font-size: 15px;
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    
+}
+
+.type-list ul{
+    font-weight: bold;
+    padding: 2px;
+    margin: 2px;
+    border-radius: 4mm;
+    border: 2px solid black;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+       
+}
+
+.pokemon-image, .loading-image{
+    max-width: 200px;
+}
+
+.poke-nombre {
+    font-size:20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.poke-id{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
