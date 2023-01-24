@@ -1,0 +1,29 @@
+.button-container {
+    /* background-color:  rgb(253, 221, 104); */
+    display: flex;
+    justify-content: center;
+
+
+}
+/* .pagination {
+margin: 0;
+} */
+
+
+
+.button-page {
+padding: 0.2rem 0.5rem;
+margin: 1rem;
+letter-spacing: 3px;
+color: black;
+background-color: rgb(253, 221, 104);
+border: 2px solid black;
+font-size: 1rem;
+font-weight: bold;
+border-radius: 15px;
+}
+
+.button-page:hover{
+background-color: #edc41f;
+cursor: pointer;
+} 
