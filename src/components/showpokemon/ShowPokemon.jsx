@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
-import "./showpokemon.css"
+import "./showpokemon.css";
 import  Spinner  from "../../images/pokeball-load.gif";
 
 const typesColors = {
@@ -29,26 +28,26 @@ function ShowPokemon(props) {
     const [pokemon, setPokemon] = useState(props.id);
     const [pokemonData, setPokemonData] = useState([]);
     
-  
+   
     useEffect(() => {
       setLoadingPokemon(true);
-      axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon}/`).then((res) => {
-        const name = res.data.name;
-        const id = res.data.id;
-        const types = res.data.types.map((elem) => elem.type.name);
-        const img = res.data.sprites.other["dream_world"].front_default;
-        const nameStat= res.data.stats.map((elem) => elem.stat.name);
-        const numberStat = res.data.stats.map((elem) => elem.base_stat);
-        setPokemonData({ name, id, types, img, nameStat, numberStat });
-        setLoadingPokemon(false);
-        setPokemon(pokemon);
-       
-    })
-    .catch((error) => {
-        console.log(error);
-    });
-    
-    }, [pokemon]);
+      fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}/`)
+        .then(response => response.json())
+        .then(json => {
+            const name = json.name
+            const img = json.sprites.other["dream_world"].front_default;
+            const id = json.id
+            const types = json.types.map((elem) => elem.type.name);
+            const nameStat= json.stats.map((elem) => elem.stat.name);
+            const numberStat = json.stats.map((elem) => elem.base_stat);
+            setPokemonData({name, id, img, types, nameStat, numberStat})
+            setPokemon(pokemon)   
+            setLoadingPokemon(false)
+        })
+        .catch((error) => {
+            console.log(error);
+         });
+    }, [pokemon])
 
     if (loadingPokemon === true) return (
         <div className='card-container'>
