@@ -1,6 +1,6 @@
 # Pokedex with Create React App
 
-This project was bootstrapped with Create React App and the JavaScript's library, "Axios", that is a package that allows us to make requests or calls to the content of the API
+This project was bootstrapped with Create React App and Mock Service Work(MSW), is a library to intercept requests in the browser and Nodejs
 
 ## Available Scripts
 
