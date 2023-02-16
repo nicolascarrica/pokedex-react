@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
-import pokeball from "../../images/pokebola-2.png"
+import pokeball from "../../images/pokebola-2.png";
 import Paginator from "../pagination/Paginator";
 import "./pokemonlist.css"
 import  Modal  from "../modal/Modal";
+
 
 
 
@@ -13,27 +13,28 @@ function PokemonList() {
    const [pokemonNumber, setPokemonNumber] = useState(null);
    const [modalVisibility, setModalVisibility] = useState(false)
 
-   const url = 'https://pokeapi.co/api/v2/pokemon?limit=20&offset=0'
+   const url = 'https://pokeapi.co/api/v2/pokemon?limit=20&offset=0';
+  
 
-   const fetchPokemonList = (url) => {
+  const fetchPokemonList =  (url) => {
 
-       axios
-       .get(url)
-       .then((data) => {
-        setPokemons(data.data.results);
-        setInfoPage(data.data);
-        })
-       .catch((error) => {
-           console.log(error);
-        });
+    fetch(url)
+      .then(response => response.json())
+      .then((json) => {
+        setPokemons(json.results)
+        setInfoPage(json)
+      })
+      .catch((error) =>{
+        console.log(error)
+      })      
 
-    }
+  }
 
-   useEffect(() => {
+  useEffect(() => {
        
         fetchPokemonList(url);
         
-     }, []);
+  }, []);
 
          
     const onPrevious = () =>{
@@ -59,10 +60,10 @@ function PokemonList() {
       
       <div className="list-container">
           <div className="name-list-container">
-            {pokemons.map((element) => (
-              <div className="name-list" id={element.name} key={element.name} onClick={viewPopUp}>
+            {pokemons.map((pokemon) => (
+              <div className="name-list" id={pokemon.name} key={pokemon.name} onClick={viewPopUp}>
                 <img src={pokeball} alt="pokeball" className="pokeball-image"/>
-                {element.name}
+                {pokemon.name}
               </div>))}
           </div>            
         </div>
