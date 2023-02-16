@@ -1,7 +1,7 @@
 import React from "react";
 import titlePokemon from "../../images/pokemon1.png"
 import "./header.css"
-import Spinner from "react-bootstrap/Spinner";
+
 
 function Header () {
 
